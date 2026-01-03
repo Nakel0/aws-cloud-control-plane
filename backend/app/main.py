@@ -141,12 +141,13 @@ async def root():
 
 
 # API Routes
-# TODO: Uncomment when implementing API endpoints
-# app.include_router(accounts.router, prefix=f"/api/{settings.API_VERSION}/accounts", tags=["Accounts"])
-# app.include_router(cost.router, prefix=f"/api/{settings.API_VERSION}/cost", tags=["Cost"])
-# app.include_router(security.router, prefix=f"/api/{settings.API_VERSION}/security", tags=["Security"])
-# app.include_router(recommendations.router, prefix=f"/api/{settings.API_VERSION}/recommendations", tags=["Recommendations"])
-# app.include_router(automation.router, prefix=f"/api/{settings.API_VERSION}/automation", tags=["Automation"])
+from app.api import auth, accounts, cost, security, recommendations
+
+app.include_router(auth.router, prefix=f"/api/{settings.API_VERSION}/auth", tags=["Authentication"])
+app.include_router(accounts.router, prefix=f"/api/{settings.API_VERSION}/accounts", tags=["Accounts"])
+app.include_router(cost.router, prefix=f"/api/{settings.API_VERSION}/cost", tags=["Cost"])
+app.include_router(security.router, prefix=f"/api/{settings.API_VERSION}/security", tags=["Security"])
+app.include_router(recommendations.router, prefix=f"/api/{settings.API_VERSION}/recommendations", tags=["Recommendations"])
 
 
 # Error handlers
